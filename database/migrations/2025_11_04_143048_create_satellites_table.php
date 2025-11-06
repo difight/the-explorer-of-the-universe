@@ -6,14 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('satellites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->integer('current_x')->default(0);
             $table->integer('current_y')->default(0);
@@ -22,17 +19,18 @@ return new class extends Migration
             $table->integer('target_y')->nullable();
             $table->integer('target_z')->nullable();
             $table->timestamp('arrival_time')->nullable();
-            $table->string('status')->default('idle'); // idle, traveling, damaged
-            $table->integer('fuel')->default(100);
+            $table->string('status')->default('idle');
+            $table->integer('energy')->default(100);
             $table->integer('integrity')->default(100);
+            $table->json('malfunctions')->nullable();
             $table->timestamps();
+
+            $table->index(['user_id']);
+            $table->index(['status', 'arrival_time']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('satellites');
     }

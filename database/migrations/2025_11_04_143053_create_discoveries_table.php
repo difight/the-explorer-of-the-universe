@@ -6,25 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('discoveries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('planet_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('planet_id')->constrained()->onDelete('cascade');
             $table->string('custom_name')->nullable();
+            $table->string('status')->default('pending'); // pending, approved, rejected
             $table->timestamp('discovered_at');
             $table->timestamps();
+
+            $table->unique(['planet_id', 'user_id']);
+            $table->index(['user_id', 'discovered_at']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('discoveries');
     }

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Planet extends Model
 {
@@ -11,12 +11,15 @@ class Planet extends Model
 
     protected $fillable = [
         'star_system_id', 'tech_name', 'type', 'has_life',
-        'size', 'resource_bonus', 'special_features'
+        'size', 'resource_bonus', 'special_features',
+        'orbit_distance', 'temperature'
     ];
 
     protected $casts = [
+        'has_life' => 'boolean',
         'special_features' => 'array',
-        'has_life' => 'boolean'
+        'resource_bonus' => 'float',
+        'temperature' => 'float'
     ];
 
     public function starSystem()
@@ -29,8 +32,24 @@ class Planet extends Model
         return $this->hasMany(Discovery::class);
     }
 
-    public function getDisplayNameAttribute()
+    public function getDisplayNameAttribute(): string
     {
-        return $this->discoveries->first()?->custom_name ?? $this->tech_name;
+        $approvedDiscovery = $this->discoveries()
+            ->where('status', 'approved')
+            ->first();
+
+        return $approvedDiscovery?->custom_name ?? $this->tech_name;
+    }
+
+    public function isDiscoveredBy(User $user): bool
+    {
+        return $this->discoveries()
+            ->where('user_id', $user->id)
+            ->exists();
+    }
+
+    public function getDiscoveryAttribute(): ?Discovery
+    {
+        return $this->discoveries()->first();
     }
 }

@@ -6,28 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('planets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('star_system_id')->constrained();
-            $table->string('tech_name'); // "Planet-1", "Planet-2"
-            $table->string('type'); // barren, desert, oceanic, etc
+            $table->foreignId('star_system_id')->constrained()->onDelete('cascade');
+            $table->string('tech_name');
+            $table->string('type');
             $table->boolean('has_life')->default(false);
             $table->integer('size');
             $table->float('resource_bonus')->default(1.0);
             $table->json('special_features')->nullable();
+            $table->integer('orbit_distance');
+            $table->float('temperature')->default(0.0);
             $table->timestamps();
+
+            $table->index(['star_system_id', 'type']);
+            $table->index(['has_life']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('planets');
     }

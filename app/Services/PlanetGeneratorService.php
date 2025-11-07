@@ -69,7 +69,7 @@ class PlanetGeneratorService
 
         $randomValue = mt_rand() / mt_getrandmax() * array_sum($starWeights);
         $cumulative = 0;
-        $selectedType = 'M'; // По умолчанию
+        $selectedType = 'M';
 
         foreach ($starWeights as $index => $weight) {
             $cumulative += $weight;
@@ -150,5 +150,18 @@ class PlanetGeneratorService
     private function createSeed(int $x, int $y, int $z): int
     {
         return crc32("{$x}-{$y}-{$z}");
+    }
+    private function getStarTravelTime(string $starType): int
+    {
+        $travelTimes = [
+            'M' => 6,    // Красный карлик - 6 часов
+            'K' => 12,   // Оранжевый карлик - 12 часов
+            'G' => 24,   // Желтый карлик - 24 часа (как сейчас)
+            'F' => 36,   // Желто-белый - 36 часов
+            'A' => 48,   // Белая звезда - 48 часов
+            'B' => 72,   // Голубой гигант - 72 часа
+        ];
+
+        return $travelTimes[$starType] ?? 24; // По умолчанию 24 часа
     }
 }

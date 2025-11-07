@@ -6,9 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\StarSystem;
 use App\Services\PlanetGeneratorService;
 use Illuminate\Http\JsonResponse;
+use App\Services\TravelTimeService;
 
 class SystemController extends Controller
 {
+    public function __construct(
+        private TravelTimeService $travelTimeService
+    ) {}
     public function current(): JsonResponse
     {
         $satellite = auth()->user()->satellite;
@@ -126,14 +130,24 @@ class SystemController extends Controller
                 $system->coord_z + $direction['z']
             );
 
+            // Генерируем систему если нужно, чтобы узнать тип звезды
+            $planetGenerator = new PlanetGeneratorService();
+            $planetGenerator->generateForSystem($neighbor);
+
+            // Используем сервис для расчета времени полета
+            $travelTime = $this->travelTimeService->calculateForStarType($neighbor->star_type);
+
             $neighbors[] = [
                 'coordinates' => $neighbor->coordinates,
                 'name' => $neighbor->name,
                 'direction' => $direction['name'],
+                'star_type' => $neighbor->star_type,
+                'travel_time_hours' => $travelTime,
                 'is_generated' => $neighbor->is_generated,
             ];
         }
 
         return $neighbors;
     }
+
 }

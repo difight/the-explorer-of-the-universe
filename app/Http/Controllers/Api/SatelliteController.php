@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Satellite;
+use App\Services\TravelTimeService;
 use App\Services\PlanetGeneratorService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class SatelliteController extends Controller
 {
+    public function __construct(
+        private TravelTimeService $travelTimeService
+    ) {}
     public function show(): JsonResponse
     {
         $satellite = auth()->user()->satellite->load('user');
@@ -64,12 +67,22 @@ class SatelliteController extends Controller
         $targetY = $satellite->current_y + $request->direction_y;
         $targetZ = $satellite->current_z + $request->direction_z;
 
-        // Полет занимает 24 часа
+        // Получаем целевую систему (или создаем запись)
+        $targetSystem = \App\Models\StarSystem::findOrCreateAt($targetX, $targetY, $targetZ);
+
+        // Генерируем систему если нужно, чтобы узнать тип звезды
+        $planetGenerator = new PlanetGeneratorService();
+        $planetGenerator->generateForSystem($targetSystem);
+
+        // Используем сервис для расчета времени полета
+        $travelTimeHours = $this->travelTimeService->calculateForStarType($targetSystem->star_type);
+        $arrivalTime = now()->addHours($travelTimeHours);
+
         $satellite->update([
             'target_x' => $targetX,
             'target_y' => $targetY,
             'target_z' => $targetZ,
-            'arrival_time' => now()->addHours(24),
+            'arrival_time' => $arrivalTime,
             'status' => 'traveling',
             'energy' => $satellite->energy - 20
         ]);
@@ -77,8 +90,10 @@ class SatelliteController extends Controller
         return response()->json([
             'message' => 'Спутник отправлен в новую систему',
             'data' => [
-                'target_system' => "Sector-{$targetX}-{$targetY}-{$targetZ}",
-                'arrival_time' => $satellite->arrival_time,
+                'target_system' => $targetSystem->name,
+                'star_type' => $targetSystem->star_type,
+                'travel_time_hours' => $travelTimeHours,
+                'arrival_time' => $arrivalTime,
                 'remaining_energy' => $satellite->energy
             ]
         ]);

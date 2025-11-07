@@ -7,6 +7,7 @@ use App\Services\TravelTimeService;
 use App\Services\PlanetGeneratorService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Jobs\ProcessSatelliteArrival;
 
 class SatelliteController extends Controller
 {
@@ -44,9 +45,9 @@ class SatelliteController extends Controller
     public function travel(Request $request): JsonResponse
     {
         $request->validate([
-            'direction_x' => 'required|integer|between:-1,1',
-            'direction_y' => 'required|integer|between:-1,1',
-            'direction_z' => 'required|integer|between:-1,1',
+            'direction_x' => 'required|integer',
+            'direction_y' => 'required|integer',
+            'direction_z' => 'required|integer',
         ]);
 
         $satellite = auth()->user()->satellite;
@@ -76,7 +77,8 @@ class SatelliteController extends Controller
 
         // Используем сервис для расчета времени полета
         $travelTimeHours = $this->travelTimeService->calculateForStarType($targetSystem->star_type);
-        $arrivalTime = now()->addHours($travelTimeHours);
+        //$arrivalTime = now()->addHours($travelTimeHours);
+        $arrivalTime = now()->addSeconds($travelTimeHours);
 
         $satellite->update([
             'target_x' => $targetX,
@@ -86,6 +88,8 @@ class SatelliteController extends Controller
             'status' => 'traveling',
             'energy' => $satellite->energy - 20
         ]);
+
+        ProcessSatelliteArrival::dispatch($satellite)->delay($arrivalTime);
 
         return response()->json([
             'message' => 'Спутник отправлен в новую систему',

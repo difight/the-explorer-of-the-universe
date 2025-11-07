@@ -124,10 +124,13 @@ class SystemController extends Controller
 
         $neighbors = [];
         foreach ($directions as $direction) {
+            $currentDirectionX = $system->coord_x + $direction['x'];
+            $currentDirectionY = $system->coord_y + $direction['y'];
+            $currentDirectionZ = $system->coord_z + $direction['z'];
             $neighbor = StarSystem::findOrCreateAt(
-                $system->coord_x + $direction['x'],
-                $system->coord_y + $direction['y'],
-                $system->coord_z + $direction['z']
+                $currentDirectionX,
+                $currentDirectionY,
+                $currentDirectionZ
             );
 
             // Генерируем систему если нужно, чтобы узнать тип звезды
@@ -138,7 +141,11 @@ class SystemController extends Controller
             $travelTime = $this->travelTimeService->calculateForStarType($neighbor->star_type);
 
             $neighbors[] = [
-                'coordinates' => $neighbor->coordinates,
+                'coordinates' => [
+                    'x' => $currentDirectionX,
+                    'y' => $currentDirectionY,
+                    'z' => $currentDirectionZ,
+                ],
                 'name' => $neighbor->name,
                 'direction' => $direction['name'],
                 'star_type' => $neighbor->star_type,

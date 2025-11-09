@@ -1,0 +1,20 @@
+meta {
+  name: discoveries
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost/api/discoveries
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: 4|LcgXafH9Ly1OdVCjIzsl9oarJ8JlZNfAjR4ScZtg93cd9b49
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

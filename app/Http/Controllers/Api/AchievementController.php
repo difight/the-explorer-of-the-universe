@@ -11,7 +11,7 @@ class AchievementController extends Controller
 {
     public function index(): JsonResponse
     {
-        $achievements = auth()->user()
+        $achievements = request()->user()
             ->achievements()
             ->orderBy('achieved_at', 'desc')
             ->get();
@@ -20,8 +20,10 @@ class AchievementController extends Controller
             'data' => $achievements->map(function($achievement) {
                 return [
                     'name' => $achievement->name,
+                    'description' => $achievement->description,
                     'icon' => $achievement->icon,
                     'type' => $achievement->type,
+                    'threshold' => $achievement->threshold,
                     'achieved_at' => $achievement->achieved_at,
                     'metadata' => $achievement->metadata,
                 ];

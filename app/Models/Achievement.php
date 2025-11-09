@@ -10,16 +10,22 @@ class Achievement extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'type', 'name', 'icon', 'achieved_at', 'metadata'
+        'user_id', 'type', 'name', 'icon', 'achieved_at', 'metadata', 'threshold', 'description'
     ];
 
     protected $casts = [
         'achieved_at' => 'datetime',
-        'metadata' => 'array'
+        'metadata' => 'array',
+        'threshold' => 'integer'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    
+    public function definition()
+    {
+        return $this->belongsTo(AchievementDefinition::class);
     }
 }

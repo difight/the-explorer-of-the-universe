@@ -15,9 +15,15 @@ class ProcessSatelliteArrival implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    private PlanetGeneratorService $planetGeneratorService;
+    private AchievementService $achievementService;
+
     public function __construct(
         public Satellite $satellite
-    ) {}
+    ) {
+        $this->planetGeneratorService = app(PlanetGeneratorService::class);
+        $this->achievementService = app(AchievementService::class);
+    }
 
     public function handle(): void
     {
@@ -27,7 +33,7 @@ class ProcessSatelliteArrival implements ShouldQueue
             return;
         }
 
-        \DB::transaction(function () {
+        \Illuminate\Support\Facades\DB::transaction(function () {
             $satellite = $this->satellite->fresh(); // Обновляем данные
 
             // Обновляем позицию спутника
@@ -44,15 +50,13 @@ class ProcessSatelliteArrival implements ShouldQueue
 
             // Генерируем систему если нужно
             $currentSystem = $satellite->currentSystem;
-            $planetGenerator = new PlanetGeneratorService();
-            $planetGenerator->generateForSystem($currentSystem);
+            $this->planetGeneratorService->generateForSystem($currentSystem);
 
             // Записываем открытия
             $this->recordDiscoveries($satellite, $currentSystem);
 
             // Проверяем достижения
-            $achievementService = new AchievementService();
-            $achievementService->checkPlanetTypeAchievements($satellite->user);
+            $this->achievementService->checkAllAchievements($satellite->user);
         });
     }
 
@@ -72,8 +76,7 @@ class ProcessSatelliteArrival implements ShouldQueue
                 ]);
 
                 if ($planet->has_life) {
-                    $achievementService = new AchievementService();
-                    $achievementService->checkSpecialAchievements(
+                    $this->achievementService->checkSpecialAchievements(
                         $satellite->user,
                         'found_life',
                         ['planet_id' => $planet->id, 'system' => $system->name]

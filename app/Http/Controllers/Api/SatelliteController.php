@@ -12,11 +12,12 @@ use App\Jobs\ProcessSatelliteArrival;
 class SatelliteController extends Controller
 {
     public function __construct(
-        private TravelTimeService $travelTimeService
+        private TravelTimeService $travelTimeService,
+        private PlanetGeneratorService $planetGeneratorService
     ) {}
     public function show(): JsonResponse
     {
-        $satellite = auth()->user()->satellite->load('user');
+        $satellite = request()->user()->satellite->load('user');
 
         return response()->json([
             'data' => [
@@ -50,7 +51,7 @@ class SatelliteController extends Controller
             'direction_z' => 'required|integer',
         ]);
 
-        $satellite = auth()->user()->satellite;
+        $satellite = request()->user()->satellite;
 
         if ($satellite->isTraveling()) {
             return response()->json([
@@ -72,13 +73,12 @@ class SatelliteController extends Controller
         $targetSystem = \App\Models\StarSystem::findOrCreateAt($targetX, $targetY, $targetZ);
 
         // Генерируем систему если нужно, чтобы узнать тип звезды
-        $planetGenerator = new PlanetGeneratorService();
-        $planetGenerator->generateForSystem($targetSystem);
+        $this->planetGeneratorService->generateForSystem($targetSystem);
 
         // Используем сервис для расчета времени полета
         $travelTimeHours = $this->travelTimeService->calculateForStarType($targetSystem->star_type);
         //$arrivalTime = now()->addHours($travelTimeHours);
-        $arrivalTime = now()->addSeconds($travelTimeHours);
+        $arrivalTime = now()->addHours($travelTimeHours);
 
         $satellite->update([
             'target_x' => $targetX,
@@ -105,7 +105,7 @@ class SatelliteController extends Controller
 
     public function repair(Request $request): JsonResponse
     {
-        $satellite = auth()->user()->satellite;
+        $satellite = request()->user()->satellite;
 
         // Базовая логика ремонта - восстанавливаем 30% целостности за 10 энергии
         if ($satellite->energy < 10) {
@@ -135,7 +135,7 @@ class SatelliteController extends Controller
 
     public function stats(): JsonResponse
     {
-        $user = auth()->user();
+        $user = request()->user();
         $satellite = $user->satellite;
 
         $stats = [

@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\DiscoveryController;
 use App\Http\Controllers\Api\SystemController;
 use App\Http\Controllers\Api\AchievementController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\PlanetNamingController;
+use App\Http\Controllers\Api\Admin\ModerationController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -33,6 +35,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // Игрок
     Route::get('/user/stats', [SatelliteController::class, 'stats']);
+
+    // Именование планет
+    Route::prefix('planets')->group(function () {
+        Route::post('/{planet}/name', [PlanetNamingController::class, 'namePlanet']);
+        Route::get('/nameable', [PlanetNamingController::class, 'getUserNameablePlanets']);
+        Route::get('/named', [PlanetNamingController::class, 'getUserNamedPlanets']);
+    });
 });
 
 // Публичные маршруты (рейтинги, зал славы)
@@ -42,4 +51,13 @@ Route::get('/hall-of-fame/life', [DiscoveryController::class, 'hallOfFame']);
 Route::prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
+});
+
+Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
+    Route::prefix('moderation')->group(function () {
+        Route::get('/pending-names', [ModerationController::class, 'getPendingNames']);
+        Route::post('/discoveries/{discovery}/approve', [ModerationController::class, 'approveName']);
+        Route::post('/discoveries/{discovery}/reject', [ModerationController::class, 'rejectName']);
+        Route::get('/stats', [ModerationController::class, 'getModerationStats']);
+    });
 });

@@ -11,18 +11,18 @@ use App\Services\TravelTimeService;
 class SystemController extends Controller
 {
     public function __construct(
-        private TravelTimeService $travelTimeService
+        private TravelTimeService $travelTimeService,
+        private PlanetGeneratorService $planetGeneratorService
     ) {}
     public function current(): JsonResponse
     {
-        $satellite = auth()->user()->satellite;
+        $satellite = request()->user()->satellite;
         $system = $satellite->currentSystem;
 
-        $planetGenerator = new PlanetGeneratorService();
-        $planetGenerator->generateForSystem($system);
+        $this->planetGeneratorService->generateForSystem($system);
 
         $system->load(['planets.discoveries' => function($query) {
-            $query->where('user_id', auth()->id())->orWhere('status', 'approved');
+            $query->where('user_id', request()->user()->id)->orWhere('status', 'approved');
         }]);
 
         return response()->json([
@@ -34,11 +34,10 @@ class SystemController extends Controller
     {
         $system = StarSystem::findOrCreateAt($x, $y, $z);
 
-        $planetGenerator = new PlanetGeneratorService();
-        $planetGenerator->generateForSystem($system);
+        $this->planetGeneratorService->generateForSystem($system);
 
         $system->load(['planets.discoveries' => function($query) {
-            $query->where('user_id', auth()->id())->orWhere('status', 'approved');
+            $query->where('user_id', request()->user()->id)->orWhere('status', 'approved');
         }]);
 
         return response()->json([
@@ -50,12 +49,11 @@ class SystemController extends Controller
     {
         $system = StarSystem::findOrCreateAt($x, $y, $z);
 
-        $planetGenerator = new PlanetGeneratorService();
-        $planetGenerator->generateForSystem($system);
+        $this->planetGeneratorService->generateForSystem($system);
 
         $planets = $system->planets()
             ->with(['discoveries' => function($query) {
-                $query->where('user_id', auth()->id())->orWhere('status', 'approved');
+                $query->where('user_id', request()->user()->id)->orWhere('status', 'approved');
             }])
             ->get();
 
@@ -71,8 +69,9 @@ class SystemController extends Controller
                     'orbit_distance' => $planet->orbit_distance,
                     'temperature' => $planet->temperature,
                     'special_features' => $planet->special_features,
-                    'is_discovered_by_me' => $planet->isDiscoveredBy(auth()->user()),
+                    'is_discovered_by_me' => $planet->isDiscoveredBy(request()->user()),
                     'discovery_status' => $planet->discovery?->status,
+                    'planet_photo' => $planet->getPlanetImageUrl()
                 ];
             })
         ]);
@@ -80,6 +79,8 @@ class SystemController extends Controller
 
     private function formatSystemData(StarSystem $system, bool $includeNeighbors): array
     {
+        $user = request()->user();
+
         $data = [
             'id' => $system->id,
             'name' => $system->name,
@@ -87,7 +88,7 @@ class SystemController extends Controller
             'star_type' => $system->star_type,
             'star_mass' => $system->star_mass,
             'is_start_system' => $system->is_start_system,
-            'planets' => $system->planets->map(function($planet) {
+            'planets' => $system->planets->map(function($planet) use ($user) {
                 return [
                     'id' => $planet->id,
                     'tech_name' => $planet->tech_name,
@@ -98,8 +99,9 @@ class SystemController extends Controller
                     'orbit_distance' => $planet->orbit_distance,
                     'temperature' => $planet->temperature,
                     'special_features' => $planet->special_features,
-                    'is_discovered_by_me' => $planet->isDiscoveredBy(auth()->user()),
-                    'can_name' => $planet->discovery && $planet->discovery->user_id === auth()->id() && !$planet->discovery->custom_name,
+                    'image_url' => $planet->getPlanetImageUrl(),
+                    'is_discovered_by_me' => $planet->isDiscoveredBy($user),
+                    'can_name' => $planet->canBeNamedByUser($user), // Новая информация
                 ];
             })
         ];
@@ -134,8 +136,7 @@ class SystemController extends Controller
             );
 
             // Генерируем систему если нужно, чтобы узнать тип звезды
-            $planetGenerator = new PlanetGeneratorService();
-            $planetGenerator->generateForSystem($neighbor);
+            $this->planetGeneratorService->generateForSystem($neighbor);
 
             // Используем сервис для расчета времени полета
             $travelTime = $this->travelTimeService->calculateForStarType($neighbor->star_type);

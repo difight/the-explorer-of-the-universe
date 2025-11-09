@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Services\SvgPlanetService;
+use Illuminate\Support\Facades\Storage;
 
 class Planet extends Model
 {
@@ -36,9 +38,32 @@ class Planet extends Model
     {
         $approvedDiscovery = $this->discoveries()
             ->where('status', 'approved')
+            ->whereNotNull('custom_name')
             ->first();
 
-        return $approvedDiscovery?->custom_name ?? $this->tech_name;
+        if ($approvedDiscovery) {
+            return $approvedDiscovery->custom_name;
+        }
+
+        // Или техническое название
+        return $this->tech_name;
+    }
+
+    public function canBeNamedByUser(User $user): bool
+    {
+        // Проверяем, может ли пользователь назвать эту планету
+        $userDiscovery = $this->discoveries()
+            ->where('user_id', $user->id)
+            ->first();
+
+        return $userDiscovery && $userDiscovery->canBeRenamed();
+    }
+
+    public function getUserDiscovery(User $user): ?Discovery
+    {
+        return $this->discoveries()
+            ->where('user_id', $user->id)
+            ->first();
     }
 
     public function isDiscoveredBy(User $user): bool
@@ -51,5 +76,28 @@ class Planet extends Model
     public function getDiscoveryAttribute(): ?Discovery
     {
         return $this->discoveries()->first();
+    }
+
+    public function getPlanetImageUrl(): string
+    {
+        $filename = 'planets/' . $this->id . '.svg';
+
+        if (Storage::exists($filename)) {
+            return Storage::url($filename);
+        }
+
+        $svgService = new SvgPlanetService();
+
+        $svgContent = $svgService->generateSvgPlanet([
+            'type' => $this->type,
+            'temperature' => $this->temperature,
+            'orbit_distance' => $this->orbit_distance,
+            'special_features' => $this->special_features,
+            'has_life' => $this->has_life,
+            'size' => $this->size,
+        ]);
+
+        Storage::put($filename, $svgContent);
+        return Storage::url($filename);
     }
 }

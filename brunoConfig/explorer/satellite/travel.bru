@@ -1,0 +1,28 @@
+meta {
+  name: travel
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost/api/satellite/travel
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: 4|LcgXafH9Ly1OdVCjIzsl9oarJ8JlZNfAjR4ScZtg93cd9b49
+}
+
+body:json {
+  {
+    "direction_x": 1,
+    "direction_y": 0,
+    "direction_z": 0
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

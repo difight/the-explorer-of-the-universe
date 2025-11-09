@@ -4,15 +4,23 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Discovery;
+use App\Services\NameModerationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class DiscoveryController extends Controller
 {
+    private NameModerationService $moderationService;
+
+    public function __construct(NameModerationService $moderationService)
+    {
+        $this->moderationService = $moderationService;
+    }
+
     public function index(): JsonResponse
     {
-        $discoveries = auth()->user()
+        $discoveries = request()->user()
             ->discoveries()
             ->with('planet.starSystem')
             ->latest()
@@ -47,7 +55,7 @@ class DiscoveryController extends Controller
     public function namePlanet(Request $request, Discovery $discovery): JsonResponse
     {
         // Проверяем, что это открытие принадлежит пользователю
-        if ($discovery->user_id !== auth()->id()) {
+        if ($discovery->user_id !== request()->user()->id) {
             return response()->json(['error' => 'Недостаточно прав'], 403);
         }
 
@@ -59,9 +67,10 @@ class DiscoveryController extends Controller
             'name' => 'required|string|min:3|max:30|regex:/^[a-zA-Z0-9\s\-]+$/',
         ]);
 
-        // Простая проверка на мат (можно заменить на более сложную)
-        if ($this->containsProfanity($request->name)) {
-            return response()->json(['error' => 'Недопустимое имя'], 400);
+        // Проверка имени с помощью сервиса модерации
+        $validation = $this->moderationService->validateName($request->name);
+        if (!$validation['is_valid']) {
+            return response()->json(['error' => 'Недопустимое имя', 'errors' => $validation['errors']], 400);
         }
 
         $discovery->update([
@@ -103,20 +112,4 @@ class DiscoveryController extends Controller
         ]);
     }
 
-    private function containsProfanity(string $text): bool
-    {
-        $profanityWords = [
-            'мат', 'слово', 'еще' // Заполнить реальным списком
-        ];
-
-        $text = Str::lower($text);
-
-        foreach ($profanityWords as $word) {
-            if (Str::contains($text, $word)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 }

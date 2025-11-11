@@ -14,11 +14,11 @@ class AchievementDefinitionSeeder extends Seeder
     {
         // Создаем ачивки для типов планет
         $planetTypeAchievements = [
-            ['type' => 'gas_giant', 'name' => 'Газовый гигант', 'icon' => '🪐', 'threshold' => 5],
-            ['type' => 'volcanic', 'name' => 'Вулканический мир', 'icon' => '🔥', 'threshold' => 3],
-            ['type' => 'oceanic', 'name' => 'Океанический исследователь', 'icon' => '🌊', 'threshold' => 2],
-            ['type' => 'ice_giant', 'name' => 'Ледяной пионер', 'icon' => '❄️', 'threshold' => 3],
-            ['type' => 'jungle', 'name' => 'Исследователь джунглей', 'icon' => '🌴', 'threshold' => 1],
+            ['name' => 'gas_giant', 'type' => 'planet_type', 'description' => 'Откройте 5 газовых гигантов', 'icon' => '🪐', 'threshold' => 5],
+            ['name' => 'volcanic', 'type' => 'planet_type', 'description' => 'Откройте 3 вулканических мира', 'icon' => '🔥', 'threshold' => 3],
+            ['name' => 'oceanic', 'type' => 'planet_type', 'description' => 'Откройте 2 океанических мира', 'icon' => '🌊', 'threshold' => 2],
+            ['name' => 'ice_giant', 'type' => 'planet_type', 'description' => 'Откройте 3 ледяных гиганта', 'icon' => '❄️', 'threshold' => 3],
+            ['name' => 'jungle', 'type' => 'planet_type', 'description' => 'Откройте 1 джунгли', 'icon' => '🌴', 'threshold' => 1],
         ];
         
         foreach ($planetTypeAchievements as $achievement) {

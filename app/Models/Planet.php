@@ -14,7 +14,7 @@ class Planet extends Model
     protected $fillable = [
         'star_system_id', 'tech_name', 'type', 'has_life',
         'size', 'resource_bonus', 'special_features',
-        'orbit_distance', 'temperature'
+        'orbit_distance', 'temperature', 'color'
     ];
 
     protected $casts = [
@@ -95,6 +95,7 @@ class Planet extends Model
             'special_features' => $this->special_features,
             'has_life' => $this->has_life,
             'size' => $this->size,
+            'color' => $this->color,
         ]);
 
         Storage::put($filename, $svgContent);

@@ -11,6 +11,7 @@ use Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         api: __DIR__.'/../routes/api.php',
+        web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
@@ -22,12 +23,12 @@ return Application::configure(basePath: dirname(__DIR__))
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
         ]);
-        
+
         // Регистрация alias для AdminMiddleware
         $middleware->alias([
             'admin' => AdminMiddleware::class,
         ]);
-        
+
         // AdminMiddleware будет применяться только к определенным маршрутам
         // в routes/api.php, а не ко всем API маршрутам
     })

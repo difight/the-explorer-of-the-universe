@@ -13,7 +13,7 @@ class SvgPlanetService
         $hasLife = $planetData['has_life'];
         $size = max(80, min(180, $planetData['size'] / 200));
 
-        $color = $this->getPlanetColor($type, $temperature, $orbitDistance);
+        $color = $planetData['color'] ?? $this->getPlanetColor($type, $temperature, $orbitDistance);
         $rotationSpeed = $this->getRotationSpeed($type);
         $rotationDirection = $this->getRotationDirection();
 

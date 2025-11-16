@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <Container maxW="100%" p={0} position={"relative"}>
         <Container maxW="100%" p={0} float="left">
-            {/*<AnimatedSpaceHeader />*/}
+            <AnimatedSpaceHeader />
         </Container>
         <Container position={"absolute"} maxW={"100%"}>
             <MenuHeader />

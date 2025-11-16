@@ -183,7 +183,7 @@ const AnimatedSpaceHeader = () => {
       </g>
 
       {/* Планета 1 - Газовый гигант с кольцами */}
-      <g className="planet-rotate" transform="translate(1000, 200)">
+      <g className="planet-rotate" transform="translate(900, 220)">
         <circle cx="0" cy="0" r="25" fill="url(#gasGiantGradient)"/>
         {/* Полосы на газовом гиганте */}
         <ellipse cx="0" cy="-8" rx="20" ry="3" fill="#cc5533" opacity="0.8"/>
@@ -205,7 +205,7 @@ const AnimatedSpaceHeader = () => {
       </g>
 
       {/* Планета 2 - Землеподобная */}
-      <g className="planet-rotate" transform="translate(400, 50)" style={{ animationDuration: '60s' }}>
+      <g className="planet-rotate" transform="translate(200, 80)" style={{ animationDuration: '60s' }}>
         <circle cx="0" cy="0" r="18" fill="url(#earthGradient)"/>
 
         {/* Континенты */}
@@ -227,7 +227,7 @@ const AnimatedSpaceHeader = () => {
       </g>
 
       {/* Планета 3 - Ледяной гигант */}
-      <g transform="translate(800, 80)">
+      <g transform="translate(850, 80)">
         <circle cx="0" cy="0" r="15" fill="url(#iceGiantGradient)"/>
 
         {/* Ледяные шапки */}
@@ -244,8 +244,8 @@ const AnimatedSpaceHeader = () => {
 
       {/* НОВЫЕ ПЛАНЕТЫ С ПРАВОГО КРАЯ - ИСПРАВЛЕННЫЕ КООРДИНАТЫ */}
 
-      {/* Планета 4 - Лавовая планета (правый верхний угол) */}
-      <g transform="translate(1050, 60)">
+      {/* Планета 4 - Лавовая планета (центр верх) */}
+      <g transform="translate(600, 60)">
         <circle cx="0" cy="0" r="12" fill="url(#lavaGradient)" className="lava-glow"/>
 
         {/* Лавовые реки */}
@@ -269,8 +269,8 @@ const AnimatedSpaceHeader = () => {
         <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="20s" repeatCount="indefinite"/>
       </g>
 
-      {/* Планета 5 - Фиолетовая планета с астероидным кольцом (правый нижний угол) */}
-      <g transform="translate(1100, 220)">
+      {/* Планета 5 - Фиолетовая планета с астероидным кольцом (центр) */}
+      <g transform="translate(500, 200)">
         <circle cx="0" cy="0" r="16" fill="url(#purpleGradient)"/>
 
         {/* Текстура поверхности */}
@@ -301,8 +301,8 @@ const AnimatedSpaceHeader = () => {
         <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="35s" repeatCount="indefinite"/>
       </g>
 
-      {/* Планета 6 - Пустынная планета (правый средний край) */}
-      <g transform="translate(1150, 120)">
+      {/* Планета 6 - Пустынная планета (левая часть) */}
+      <g transform="translate(300, 150)">
         <circle cx="0" cy="0" r="14" fill="url(#desertGradient)"/>
 
         {/* Кратеры */}
@@ -391,46 +391,33 @@ const AnimatedSpaceHeader = () => {
         style={{ animationDelay: '-5s' }}
       />
 
-      {/* Спутник Вояджер (без двигателя) */}
+      {/* Спутник Вояджер */}
       <g className="satellite">
-        {/* Основной десятигранный корпус */}
-        <path
-          d="M -20,-8 L -15,-10 L -10,-12 L 10,-12 L 15,-10 L 20,-8 L 20,8 L 15,10 L 10,12 L -10,12 L -15,10 L -20,8 Z"
-          fill="#c0c0c0"
-          stroke="#909090"
-          strokeWidth="1"
-        />
+        {/* Основной корпус */}
+        <rect x="-20" y="-10" width="40" height="20" rx="5" fill="#c0c0c0" stroke="#909090" strokeWidth="1"/>
 
-        {/* Золотая пластина с записями */}
-        <rect x="-18" y="-6" width="36" height="12" fill="#ffd700" stroke="#b39700" strokeWidth="0.5" rx="1"/>
+        {/* Золотая пластина с записями о человечестве */}
+        <rect x="-18" y="-8" width="36" height="6" fill="#ffd700" stroke="#b39700" strokeWidth="0.5" rx="1"/>
 
         {/* Научные приборы */}
-        <circle cx="-12" cy="0" r="3" fill="#2a4a8a"/>
-        <circle cx="12" cy="0" r="3" fill="#2a4a8a"/>
-        <circle cx="0" cy="-5" r="2" fill="#3a5a9a"/>
-        <circle cx="0" cy="5" r="2" fill="#3a5a9a"/>
+        <circle cx="-12" cy="0" r="2" fill="#2a4a8a"/>
+        <circle cx="12" cy="0" r="2" fill="#2a4a8a"/>
+        <circle cx="0" cy="-5" r="1.5" fill="#3a5a9a"/>
+        <circle cx="0" cy="5" r="1.5" fill="#3a5a9a"/>
 
-        {/* Большая антенна */}
-        <line x1="0" y1="-12" x2="0" y2="-35" stroke="#d0d0d0" strokeWidth="1.5"/>
-        <circle cx="0" cy="-35" r="4" fill="#e8e8e8" className="antenna-glow"/>
+        {/* Большая антенна для связи с Землей */}
+        <line x1="0" y1="-10" x2="0" y2="-30" stroke="#d0d0d0" strokeWidth="2"/>
+        <circle cx="0" cy="-30" r="4" fill="#e8e8e8" className="antenna-glow"/>
 
-        {/* Вторая антенна */}
-        <line x1="-5" y1="-10" x2="-15" y2="-25" stroke="#c8c8c8" strokeWidth="1"/>
-        <circle cx="-15" cy="-25" r="2" fill="#e0e0e0"/>
-
-        {/* Топливные баки */}
-        <ellipse cx="-25" cy="0" rx="3" ry="8" fill="#a0a0a0" transform="rotate(15 -25 0)"/>
-        <ellipse cx="25" cy="0" rx="3" ry="8" fill="#a0a0a0" transform="rotate(-15 25 0)"/>
+        {/* Малая антенна */}
+        <line x1="-15" y1="-5" x2="-25" y2="-20" stroke="#c8c8c8" strokeWidth="1"/>
+        <circle cx="-25" cy="-20" r="2" fill="#e0e0e0"/>
 
         {/* Солнечные панели */}
-        <rect x="-40" y="-15" width="8" height="30" fill="#2a3a7a" transform="rotate(20 0 0)"/>
-        <rect x="32" y="-15" width="8" height="30" fill="#2a3a7a" transform="rotate(-20 0 0)"/>
+        <rect x="-35" y="-15" width="6" height="30" fill="#2a3a7a" transform="rotate(20 -35 -15)"/>
+        <rect x="29" y="-15" width="6" height="30" fill="#2a3a7a" transform="rotate(-20 29 -15)"/>
 
-        {/* Дополнительные антенны */}
-        <line x1="18" y1="-8" x2="28" y2="-18" stroke="#b8b8b8" strokeWidth="0.8"/>
-        <line x1="18" y1="8" x2="28" y2="18" stroke="#b8b8b8" strokeWidth="0.8"/>
-
-        {/* Мигающие научные огни */}
+        {/* Мигающие индикаторы */}
         <circle cx="-8" cy="-8" r="1" fill="#ff4444">
           <animate
             attributeName="opacity"

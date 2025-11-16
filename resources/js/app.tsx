@@ -4,8 +4,8 @@ import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { PrimeReactProvider } from 'primereact/api';
 import { ChakraProvider } from '@chakra-ui/react'
+import AlertBox from './components/ui/AlertBox';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -22,12 +22,10 @@ createInertiaApp({
         root.render(
             <ChakraProvider>
                 <StrictMode>
+                    <AlertBox />
                     <App {...props} />
                 </StrictMode>
             </ChakraProvider>,
         );
-    },
-    progress: {
-        color: '#4B5563',
     },
 });

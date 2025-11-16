@@ -7,6 +7,5 @@ export const useUserStore = create<UserStore>((set) => ({
   clearUser: () => set({ user: null }),
 }));
 
-// Для обратной совместимости, если вы импортируете как default
 const userStore = useUserStore;
 export default userStore;

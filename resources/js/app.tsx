@@ -5,7 +5,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ChakraProvider } from '@chakra-ui/react'
-import AlertBox from './components/ui/AlertBox';
+import { Toaster } from './components/ui/toaster';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -22,7 +22,7 @@ createInertiaApp({
         root.render(
             <ChakraProvider>
                 <StrictMode>
-                    <AlertBox />
+                    <Toaster />
                     <App {...props} />
                 </StrictMode>
             </ChakraProvider>,

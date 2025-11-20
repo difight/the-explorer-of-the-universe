@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -53,10 +54,13 @@ class AuthController extends Controller
 
     public function login(Request $request): JsonResponse
     {
+        Log::info('AuthController@login called', ['request' => $request->all()]);
+        Log::info('AuthController@login: Validation started');
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
+        Log::info('AuthController@login: Validation passed');
 
         $user = User::where('email', $request->email)->first();
 
@@ -66,12 +70,11 @@ class AuthController extends Controller
             ]);
         }
 
-        // Удаляем старые токены (опционально - для безопасности)
         $user->tokens()->where('name', 'auth-token')->delete();
 
         $token = $user->createToken('auth-token')->plainTextToken;
 
-        return response()->json([
+        $response = response()->json([
             'message' => 'Login successful',
             'data' => [
                 'user' => [
@@ -83,6 +86,12 @@ class AuthController extends Controller
                 'token_type' => 'Bearer',
             ]
         ]);
+
+        Log::info('AuthController@login: Response prepared', ['response' => $response]);
+        return $response;
+
+        Log::info('AuthController@login: Response prepared', ['response' => $response]);
+        return $response;
     }
 
     public function logout(Request $request): JsonResponse

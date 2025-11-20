@@ -96,7 +96,6 @@ const MenuHeader = () => {
             console.log(result);
             handleClose();
         } catch (error) {
-            // Ошибки будут показаны через наш Toaster компонент
             console.error("Ошибка входа:", error);
         }
     }

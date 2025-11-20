@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\PlanetNamingController;
 use App\Http\Controllers\Api\Admin\ModerationController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['api', 'auth:sanctum'])->group(function () {
     Route::prefix('auth')->group(function () {
         Route::get('/user', [AuthController::class, 'user']);
         Route::post('/logout', [AuthController::class, 'logout']);
@@ -48,7 +48,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::get('/leaderboards/explorers', [AchievementController::class, 'leaderboard']);
 Route::get('/hall-of-fame/life', [DiscoveryController::class, 'hallOfFame']);
 
-Route::prefix('auth')->group(function () {
+Route::middleware(['api'])->prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
 });

@@ -1,0 +1,26 @@
+meta {
+  name: test
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://account2.uhotels.app/hotel/reservio/orders/edit?isPopup=y&eventPopup=apartamentsEventHandler
+  body: none
+  auth: inherit
+}
+
+params:query {
+  isPopup: y
+  eventPopup: apartamentsEventHandler
+}
+
+headers {
+  uhotels_session: eyJpdiI6ImlnWEdNYXRmSXVCeG1zUGFDMERwbGc9PSIsInZhbHVlIjoiV3FwTWR4Q2ZraEltLzJMQjRKQmFwSHFQRUNIR0g5NFZBT2htcnRzZVU0NGtFNnlKT1NNQUNrYmQvK0FlVjFiZmdram5MbFRFbnFBaDczZ0F4WFcyT241Vnl0NnJ1RDRhWnQ5dW5ibXhqR093NnJvYWNud0lBSzhiK2J4NVFqWTkiLCJtYWMiOiIzYWU2ODMzYzY4NTM1ZWRjOWM3MGJjYWFiNWU2Mzk2ZTA3MzAzZGU2MmRhYTI4OTExNjM2YzViYjFhNTk4YjhhIiwidGFnIjoiIn0%3D
+  XSRF-TOKEN: eyJpdiI6InFnS3ZyWWluV1BzenVyVEpjeUxVVmc9PSIsInZhbHVlIjoiNVBPTG5DZkJldDI1a1ZtZGZzekJOQUpZc1dVakNHd3NGa3ZlYVo4UnFaVkYzdEhTTzhUTmJxZDFUL1h6MmpMWDFMWFMyQzdFc2ZuY0JGQkFWQmd5S1g5dFdTQmpLdXcxLzkrSm5tdm9BR3ZvVG56d0VGRXVZek1SUmJZU0NIeFAiLCJtYWMiOiIzOTU4Y2JkMDNkZTRlYTdlNDMwNDRiODAwODg1NWNmNmJmMWMwODFkZmQwMzMxN2YyMGIyNDk3OWE0NTE0NmI1IiwidGFnIjoiIn0%3D
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -37,7 +37,8 @@ class WayToBackend {
                 },
                 body: JSON.stringify(data)
             });
-
+            console.log('data', data)
+            console.log('response', response)
             if (response.ok) {
                 return await response.json();
             } else {
@@ -52,6 +53,7 @@ class WayToBackend {
                             errors
                         );
                     case 401:
+                    case 302:
                         throw new UnauthorizedError(
                             errorData.message || "Неправильные учетные данные"
                         );

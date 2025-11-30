@@ -13,7 +13,6 @@ Route::middleware(['api', 'auth:sanctum'])->group(function () {
     Route::prefix('auth')->group(function () {
         Route::get('/user', [AuthController::class, 'user']);
         Route::post('/logout', [AuthController::class, 'logout']);
-        Route::post('/refresh', [AuthController::class, 'refresh']);
     });
 
     // Спутник
@@ -51,6 +50,7 @@ Route::get('/hall-of-fame/life', [DiscoveryController::class, 'hallOfFame']);
 Route::middleware(['api'])->prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
 });
 
 Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {

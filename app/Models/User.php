@@ -91,4 +91,96 @@ class User extends Authenticatable
             ]);
         });
     }
+
+    /**
+     * Get the refresh tokens for the user.
+     */
+    public function refreshTokens()
+    {
+        // Получаем таблицу refresh_tokens
+        return $this->hasMany(\Laravel\Sanctum\PersonalAccessToken::class, 'tokenable_id')
+                    ->join('refresh_tokens', 'personal_access_tokens.id', '=', 'refresh_tokens.token_id');
+    }
+
+    /**
+     * Check if user has a valid refresh token.
+     *
+     * @param string $refreshToken
+     * @return bool
+     */
+    public static function hasValidRefreshToken($refreshToken)
+    {
+        // Разделяем токен на id и токен
+        $parts = explode('|', $refreshToken, 2);
+
+        if (count($parts) !== 2) {
+            return false;
+        }
+
+        [$id, $token] = $parts;
+
+        // Ищем refresh токен в таблице refresh_tokens по token_id и хэшированному токену
+        $refreshTokenRecord = RefreshToken::where('token_id', $id)
+            ->where('token', hash('sha256', $token))
+            ->where('expires_at', '>', now())
+            ->first();
+
+        return !is_null($refreshTokenRecord);
+    }
+
+    /**
+     * Clear all refresh tokens for the user.
+     */
+    public function clearRefreshTokens($exceptTokenId = null)
+    {
+        // Получаем все токены пользователя
+        $tokens = $this->tokens()->get();
+
+        // Удаляем связанные refresh токены
+        foreach ($tokens as $token) {
+            // Пропускаем токен, который не нужно удалять
+            if ($exceptTokenId && $token->id == $exceptTokenId) {
+                continue;
+            }
+            RefreshToken::where('token_id', $token->id)->delete();
+        }
+    }
+
+    /**
+     * Get user by refresh token if not expired.
+     *
+     * @param string $refreshToken
+     * @return User|null
+     */
+    public static function byRefreshToken($refreshToken)
+    {
+        // Разделяем токен на id и токен
+        $parts = explode('|', $refreshToken, 2);
+
+        if (count($parts) !== 2) {
+            return null;
+        }
+
+        [$id, $token] = $parts;
+
+        // Ищем refresh токен в таблице refresh_tokens по token_id и хэшированному токену
+        $refreshTokenRecord = RefreshToken::where('token_id', $id)
+            ->where('token', hash('sha256', $token))
+            ->where('expires_at', '>', now())
+            ->first();
+
+        if (!$refreshTokenRecord) {
+            return null;
+        }
+
+        // Получаем токен из таблицы personal_access_tokens
+        $personalAccessToken = \Laravel\Sanctum\PersonalAccessToken::find($refreshTokenRecord->token_id);
+
+        if (!$personalAccessToken) {
+            return null;
+        }
+
+        // Возвращаем пользователя
+        return $personalAccessToken->tokenable;
+    }
 }

@@ -52,6 +52,7 @@ const MenuHeader = () => {
     // Store hooks
     const addAlert = useAlertsStore((state) => state.addAlert)
     const user = useUserStore((state) => state.user);
+    const setUser = useUserStore((state) => state.setUser);
 
     // Обработчик изменений полей формы
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,7 +94,7 @@ const MenuHeader = () => {
                 email: formData.email,
                 password: formData.password
             });
-            console.log(result);
+            setUser(result.data.data)
             handleClose();
         } catch (error) {
             console.error("Ошибка входа:", error);

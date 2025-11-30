@@ -1,0 +1,1402 @@
+[2025-11-28 19:19:08] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764357548803"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 19:19:16] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764357556885"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 19:20:40] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764357640722"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 19:20:43] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764357643874"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 19:20:51] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764357651121"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 19:31:27] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764358287272"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 19:31:29] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764358289517"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 19:31:34] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764358295045"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:26:47] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764361606953"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:26:54] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764361614776"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:28:19] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764361699621"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:28:43] POST http://localhost:8080/api/auth/register
+Headers: {
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "109"
+    ],
+    "sec-ch-ua-platform": [
+        "\"Windows\""
+    ],
+    "user-agent": [
+        "Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36 Edg\/142.0.0.0"
+    ],
+    "accept": [
+        "application\/json"
+    ],
+    "sec-ch-ua": [
+        "\"Chromium\";v=\"142\", \"Microsoft Edge\";v=\"142\", \"Not_A Brand\";v=\"99\""
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "sec-ch-ua-mobile": [
+        "?0"
+    ],
+    "origin": [
+        "http:\/\/localhost:8080"
+    ],
+    "sec-fetch-site": [
+        "same-origin"
+    ],
+    "sec-fetch-mode": [
+        "cors"
+    ],
+    "sec-fetch-dest": [
+        "empty"
+    ],
+    "referer": [
+        "http:\/\/localhost:8080\/"
+    ],
+    "accept-encoding": [
+        "gzip, deflate, br, zstd"
+    ],
+    "accept-language": [
+        "ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7"
+    ],
+    "cookie": [
+        "_ym_uid=1742714894328399199; _ym_d=1742714894; _ga=GA1.1.412453835.1744896595; _ga_S8LH2LV5Y0=GS1.1.1744896595.1.0.1744896595.0.0.0; _ga_05PDRNPJN2=GS1.1.1744896595.1.1.1744896819.0.0.0; opkz=f8ee4a9f044233e7644d3364224f792c.e418421fff5b4c5d8c758347aed87653; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6IlhwZkpwRG1sWG1sUFhNSDUxczBJZUE9PSIsInZhbHVlIjoiRWZ1VkJpcDV2eUNHNDhPK2tmQXVGZkNVeXQ4YlZ2MCtBd0IrUzRBazRpUFIrRGpSQ1ovN1o3ZlR2SXU0WHVPWXhGd3VxczYxalp6cUxIUG1sOVlBMmRXcU4xWFJ5WFRmYWdaSDNrZjcvZElqUGJpVTVpYXQ3MkprLyt3Zis4UDFUUTFRbGszZU5NZm5ucHVpU0NGMUhBdjljSUQxc0VWL01PZ1RnR0FOMTA3SDJLZWZLYXhRUlA1UllPTCtEQW8rSTdvbTFIVnZyd3p5Rld1NHFKMGtvRVNiY214a1dNZ1FGOEQ2ZlFEU2dzdz0iLCJtYWMiOiI4MTFmZTRmM2U4NTliZjEwZTdhOWFhZTEyYWU0ZDAzOTZmNGRmNTU4ZjgzMjMyZTA1YjlmNzIxMTFhNTk0MzllIiwidGFnIjoiIn0%3D; remember_employee_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6IlJ2SnlKczhkRnJyMlM5aUJkYUV2SVE9PSIsInZhbHVlIjoiMmlZOWs0NCtOZThrT1VoWER3ZTN4cXlLd2laeFpDWk5qMldaOEhLUks2blRKY1M3WUxWNXptNjZHY091R0dDMDUyTzNEYUdtbGgwM3BjNWIvQXFVZ2F2Q0pzQjZXV2c5SnFSbUV5c0NFZmxaemhzV2VYRytSWEVqNjVFQVByK0sycDNFUDdvQkV0NGFuclRoMW1ZbzVzQnFMV0dJM3lYdUdzTklWSUQ2ZHJ2QTJ1MDd1NTA5TCtmQlk4UFhQUWQ2R1UrNjBaUElvdGRFUzlZcUhJN3FrWDVmQVU0bHdxdTdRNGRIemRNVzR6MD0iLCJtYWMiOiI4MTQyNzZiMjE1OWYyNmU3ZmRiMmRlYTcwMTUxNzRmOTliNDY4YmIzNDhjMzg4YWZmMWRmMmQwOTZkNWNmYjA3IiwidGFnIjoiIn0%3D; __next_hmr_refresh_hash__=d395d1cf18e997a501ea258d444a8990f506bc7fede805e2; authjs.csrf-token=f1d51502ef60bcb656a4cc5d2fc8e82d17fe2f2b257f875e08b927081a7965bf%7Ca58274534bcfb2a210b8a06837145876dddded00bbbc3d20335f0aba8e54c09f; authjs.callback-url=http%3A%2F%2Flocalhost%3A3000; operator_client_id=eyJpdiI6ImtIb1JHNldjb3pHNmVrcmVmNXZZY3c9PSIsInZhbHVlIjoiTTFRVEVKRzJEWEFpMVQvTC81bk1iVFRsbFI3UVU3c2lMRTlIakRMNVNvZGZHbWg5ek8yZ3ZmejIxMytrcVhMayIsIm1hYyI6IjI0MzU0NmZiMzJkMDVhZTIyMDM4YzU4MjY3MDIxZGE1NWI4Y2RlMDk4OTc3OTkzMzhiMmMyZmY1NzIwOTFjMGIiLCJ0YWciOiIifQ%3D%3D; current_hotel_id=eyJpdiI6IkU5bld0cUFudHB2S2pCV3pOZFN0SlE9PSIsInZhbHVlIjoiQ1R1ejZyakVqbCtDOEk2QjgxTEYybkhvSlRFcDE2L3lCOWVwZXIydWdOMTZOcG9LcFgxbGFvVjVYK3dIV3JNbiIsIm1hYyI6ImI3NzcxN2E2ZDBiMTAxNmRhMjM0MGUyMDUyOTc5ODFhYWE5MWE0OThlM2YyMzJkMGJjYjIyY2NlODc4YTlkZTIiLCJ0YWciOiIifQ%3D%3D; XSRF-TOKEN=eyJpdiI6Im5NTVYzV2YybEcrVmZmZ3JqbXBSclE9PSIsInZhbHVlIjoiWnNEYm5zRStibkoveCtFcUo0NGptNEtSZlVyM2l0aTRZdllBdUlyc3JOb1ZSNDZCdzJTcHk4S2VOY3ZYV1M3VUUyTVBYdnpIa1NSeDlZMDhDWlptMlNrdWZnWkY2SnVJZXU1dm1vU1lOOEkwenZsVW9hQWJYS0ROa1Irc1dqZVEiLCJtYWMiOiIxNDc0YjAxZmY3YjA1MWFmODU1YThiZDY5MzIzMjliNWUyNmQxMTZlNTZiYThlMmVkMzQ4NTYwYWQ2Mjk2N2M2IiwidGFnIjoiIn0%3D; laravel-session=eyJpdiI6InpiVmtTeWowMkFXaUROVVFTM1pPb1E9PSIsInZhbHVlIjoiRnFHdUs1dWFwMmx0d3ZtRnlZUFBybUN1eCtFYjJnNDFMcWdzMWt3NHZZS2pMSmlJeWFzZnZicVROMjJvcU1QbTRUQlhqYTlGL09LdWhPeWwwOWZtYlRJemgrRnVBV2xObUg0UlM2Tk1lc0J4RHp2ekF5ZVFtOGhIbUt2QjBLMmUiLCJtYWMiOiIyNDEzNGM1MjJmOGVmM2E3YmYwZTkzZjAzZDZmMTRiNDUzNjJiMjI0NjM5NzU0ODEwM2M2NDAwODJjN2Y4ZTFhIiwidGFnIjoiIn0%3D"
+    ]
+}
+Cookies: {
+    "_ym_uid": "1742714894328399199",
+    "_ym_d": "1742714894",
+    "_ga": "GA1.1.412453835.1744896595",
+    "_ga_S8LH2LV5Y0": "GS1.1.1744896595.1.0.1744896595.0.0.0",
+    "_ga_05PDRNPJN2": "GS1.1.1744896595.1.1.1744896819.0.0.0",
+    "opkz": "f8ee4a9f044233e7644d3364224f792c.e418421fff5b4c5d8c758347aed87653",
+    "remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d": "eyJpdiI6IlhwZkpwRG1sWG1sUFhNSDUxczBJZUE9PSIsInZhbHVlIjoiRWZ1VkJpcDV2eUNHNDhPK2tmQXVGZkNVeXQ4YlZ2MCtBd0IrUzRBazRpUFIrRGpSQ1ovN1o3ZlR2SXU0WHVPWXhGd3VxczYxalp6cUxIUG1sOVlBMmRXcU4xWFJ5WFRmYWdaSDNrZjcvZElqUGJpVTVpYXQ3MkprLyt3Zis4UDFUUTFRbGszZU5NZm5ucHVpU0NGMUhBdjljSUQxc0VWL01PZ1RnR0FOMTA3SDJLZWZLYXhRUlA1UllPTCtEQW8rSTdvbTFIVnZyd3p5Rld1NHFKMGtvRVNiY214a1dNZ1FGOEQ2ZlFEU2dzdz0iLCJtYWMiOiI4MTFmZTRmM2U4NTliZjEwZTdhOWFhZTEyYWU0ZDAzOTZmNGRmNTU4ZjgzMjMyZTA1YjlmNzIxMTFhNTk0MzllIiwidGFnIjoiIn0=",
+    "remember_employee_59ba36addc2b2f9401580f014c7f58ea4e30989d": "eyJpdiI6IlJ2SnlKczhkRnJyMlM5aUJkYUV2SVE9PSIsInZhbHVlIjoiMmlZOWs0NCtOZThrT1VoWER3ZTN4cXlLd2laeFpDWk5qMldaOEhLUks2blRKY1M3WUxWNXptNjZHY091R0dDMDUyTzNEYUdtbGgwM3BjNWIvQXFVZ2F2Q0pzQjZXV2c5SnFSbUV5c0NFZmxaemhzV2VYRytSWEVqNjVFQVByK0sycDNFUDdvQkV0NGFuclRoMW1ZbzVzQnFMV0dJM3lYdUdzTklWSUQ2ZHJ2QTJ1MDd1NTA5TCtmQlk4UFhQUWQ2R1UrNjBaUElvdGRFUzlZcUhJN3FrWDVmQVU0bHdxdTdRNGRIemRNVzR6MD0iLCJtYWMiOiI4MTQyNzZiMjE1OWYyNmU3ZmRiMmRlYTcwMTUxNzRmOTliNDY4YmIzNDhjMzg4YWZmMWRmMmQwOTZkNWNmYjA3IiwidGFnIjoiIn0=",
+    "__next_hmr_refresh_hash__": "d395d1cf18e997a501ea258d444a8990f506bc7fede805e2",
+    "authjs_csrf-token": "f1d51502ef60bcb656a4cc5d2fc8e82d17fe2f2b257f875e08b927081a7965bf|a58274534bcfb2a210b8a06837145876dddded00bbbc3d20335f0aba8e54c09f",
+    "authjs_callback-url": "http:\/\/localhost:3000",
+    "operator_client_id": "eyJpdiI6ImtIb1JHNldjb3pHNmVrcmVmNXZZY3c9PSIsInZhbHVlIjoiTTFRVEVKRzJEWEFpMVQvTC81bk1iVFRsbFI3UVU3c2lMRTlIakRMNVNvZGZHbWg5ek8yZ3ZmejIxMytrcVhMayIsIm1hYyI6IjI0MzU0NmZiMzJkMDVhZTIyMDM4YzU4MjY3MDIxZGE1NWI4Y2RlMDk4OTc3OTkzMzhiMmMyZmY1NzIwOTFjMGIiLCJ0YWciOiIifQ==",
+    "current_hotel_id": "eyJpdiI6IkU5bld0cUFudHB2S2pCV3pOZFN0SlE9PSIsInZhbHVlIjoiQ1R1ejZyakVqbCtDOEk2QjgxTEYybkhvSlRFcDE2L3lCOWVwZXIydWdOMTZOcG9LcFgxbGFvVjVYK3dIV3JNbiIsIm1hYyI6ImI3NzcxN2E2ZDBiMTAxNmRhMjM0MGUyMDUyOTc5ODFhYWE5MWE0OThlM2YyMzJkMGJjYjIyY2NlODc4YTlkZTIiLCJ0YWciOiIifQ==",
+    "XSRF-TOKEN": "eyJpdiI6Im5NTVYzV2YybEcrVmZmZ3JqbXBSclE9PSIsInZhbHVlIjoiWnNEYm5zRStibkoveCtFcUo0NGptNEtSZlVyM2l0aTRZdllBdUlyc3JOb1ZSNDZCdzJTcHk4S2VOY3ZYV1M3VUUyTVBYdnpIa1NSeDlZMDhDWlptMlNrdWZnWkY2SnVJZXU1dm1vU1lOOEkwenZsVW9hQWJYS0ROa1Irc1dqZVEiLCJtYWMiOiIxNDc0YjAxZmY3YjA1MWFmODU1YThiZDY5MzIzMjliNWUyNmQxMTZlNTZiYThlMmVkMzQ4NTYwYWQ2Mjk2N2M2IiwidGFnIjoiIn0=",
+    "laravel-session": "eyJpdiI6InpiVmtTeWowMkFXaUROVVFTM1pPb1E9PSIsInZhbHVlIjoiRnFHdUs1dWFwMmx0d3ZtRnlZUFBybUN1eCtFYjJnNDFMcWdzMWt3NHZZS2pMSmlJeWFzZnZicVROMjJvcU1QbTRUQlhqYTlGL09LdWhPeWwwOWZtYlRJemgrRnVBV2xObUg0UlM2Tk1lc0J4RHp2ekF5ZVFtOGhIbUt2QjBLMmUiLCJtYWMiOiIyNDEzNGM1MjJmOGVmM2E3YmYwZTkzZjAzZDZmMTRiNDUzNjJiMjI0NjM5NzU0ODEwM2M2NDAwODJjN2Y4ZTFhIiwidGFnIjoiIn0="
+}
+
+[2025-11-28 20:28:55] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764361734940"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:29:01] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764361741448"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:29:59] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764361799206"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:30:06] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764361807001"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:31:41] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764361901769"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:31:47] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764361907324"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:33:33] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764362013858"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:35:53] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764362153396"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:36:51] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764362211589"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:38:02] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764362282917"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:49:07] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764362947493"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:49:14] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764362954073"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:53:24] POST http://localhost:8080/api/auth/login
+Headers: {
+    "host": [
+        "localhost:8080"
+    ],
+    "user-agent": [
+        "curl\/8.5.0"
+    ],
+    "accept": [
+        "*\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "content-length": [
+        "52"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:53:37] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764363217291"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:53:43] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764363223243"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:54:51] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764363291324"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:54:57] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764363297444"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:57:17] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764363437887"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:57:23] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764363443864"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:58:32] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764363512206"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:58:37] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764363517893"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:59:29] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764363569519"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 20:59:35] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764363575775"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 21:00:38] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764363638911"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 21:00:44] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764363644741"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 21:01:37] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764363697379"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 21:01:43] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764363703210"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 21:02:06] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764363726479"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 21:02:09] POST http://localhost:8080/api/auth/login
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "request-start-time": [
+        "1764363729437"
+    ],
+    "content-length": [
+        "61"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ]
+}
+Cookies: []
+
+[2025-11-28 21:02:14] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "accept": [
+        "application\/json, text\/plain, *\/*"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "user-agent": [
+        "bruno-runtime\/2.14.2"
+    ],
+    "authorization": [
+        "Bearer "
+    ],
+    "request-start-time": [
+        "1764363734735"
+    ],
+    "accept-encoding": [
+        "gzip, compress, deflate, br"
+    ],
+    "host": [
+        "localhost:8080"
+    ],
+    "connection": [
+        "keep-alive"
+    ],
+    "content-length": [
+        "0"
+    ]
+}
+Cookies: []
+
+[2025-11-28 21:35:58] POST http://localhost:8080/api/auth/register
+Headers: {
+    "host": [
+        "localhost:8080"
+    ],
+    "user-agent": [
+        "Symfony"
+    ],
+    "accept": [
+        "application\/json"
+    ],
+    "accept-language": [
+        "en-us,en;q=0.5"
+    ],
+    "accept-charset": [
+        "ISO-8859-1,utf-8;q=0.7,*;q=0.7"
+    ],
+    "content-length": [
+        "104"
+    ],
+    "content-type": [
+        "application\/json"
+    ]
+}
+Cookies: []
+
+[2025-11-28 21:35:58] POST http://localhost:8080/api/auth/register
+Headers: {
+    "host": [
+        "localhost:8080"
+    ],
+    "user-agent": [
+        "Symfony"
+    ],
+    "accept": [
+        "application\/json"
+    ],
+    "accept-language": [
+        "en-us,en;q=0.5"
+    ],
+    "accept-charset": [
+        "ISO-8859-1,utf-8;q=0.7,*;q=0.7"
+    ],
+    "content-length": [
+        "83"
+    ],
+    "content-type": [
+        "application\/json"
+    ]
+}
+Cookies: []
+
+[2025-11-28 21:36:00] POST http://localhost:8080/api/auth/refresh
+Headers: {
+    "host": [
+        "localhost:8080"
+    ],
+    "user-agent": [
+        "Symfony"
+    ],
+    "accept": [
+        "application\/json"
+    ],
+    "accept-language": [
+        "en-us,en;q=0.5"
+    ],
+    "accept-charset": [
+        "ISO-8859-1,utf-8;q=0.7,*;q=0.7"
+    ],
+    "content-length": [
+        "2"
+    ],
+    "content-type": [
+        "application\/json"
+    ],
+    "authorization": [
+        "Bearer invalid-token"
+    ]
+}
+Cookies: []
+

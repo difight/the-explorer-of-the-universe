@@ -3,9 +3,16 @@ export interface User {
     name: string;
     email: string;
 }
+export interface UserData {
+    access_token: string;
+    access_token_expires_at: string;
+    refresh_token: string;
+    refresh_token_expires_at: string;
+    user: User
+}
 export interface UserStore {
-    user: User | null;
-    setUser: (user: User) => void;
+    user: UserData | null;
+    setUser: (user: UserData) => void;
 }
 
 export interface AlertStore {

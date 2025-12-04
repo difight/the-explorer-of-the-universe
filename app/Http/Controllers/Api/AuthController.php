@@ -80,7 +80,10 @@ class AuthController extends Controller
     public function logout(Request $request): JsonResponse
     {
         // Удаляем текущий токен
-        $request->user()->currentAccessToken()->delete();
+        $user = $request->user();
+        // Удаляем связанные refresh токены перед удалением access токенов
+        $user->clearRefreshTokens();
+        $user->tokens()->where('name', 'api')->delete();
 
         return response()->json([
             'message' => 'Successfully logged out'

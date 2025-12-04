@@ -1,4 +1,3 @@
-
 import {
     Stack,
     Button,
@@ -18,6 +17,7 @@ import { useState, useCallback } from "react";
 import { useUserStore } from '@/store/userStore';
 import { useAlertsStore } from "@/store/alertStore";
 import WayToBackend from '@/lib/WayToBackend';
+import { router } from '@inertiajs/react';
 
 const MenuHeader = () => {
     // State hooks
@@ -31,6 +31,12 @@ const MenuHeader = () => {
         password: '',
         password_confirmation: ''
     });
+
+    // Store hooks
+    const addAlert = useAlertsStore((state) => state.addAlert)
+    const user = useUserStore((state) => state.user);
+    const setUser = useUserStore((state) => state.setUser);
+    const clearUser = useUserStore((state) => state.clearUser);
 
     // Callback hooks
     const showPassword = useCallback(() => setShowPassword(!showPasswordState), [showPasswordState]);
@@ -48,11 +54,16 @@ const MenuHeader = () => {
             password_confirmation: ''
         });
     }, []);
-
-    // Store hooks
-    const addAlert = useAlertsStore((state) => state.addAlert)
-    const user = useUserStore((state) => state.user);
-    const setUser = useUserStore((state) => state.setUser);
+    const handleLogout = async () => {
+        try {
+            await WayToBackend.logoutUser();
+            clearUser();
+            // После выхода перенаправляем на главную страницу
+            router.visit('/');
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     // Обработчик изменений полей формы
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +83,6 @@ const MenuHeader = () => {
             return;
         }
 
-        // Отправка данных на сервер
         try {
             const result = await WayToBackend.registerUser({
                 name: formData.name,
@@ -80,24 +90,46 @@ const MenuHeader = () => {
                 password: formData.password,
                 password_confirmation: formData.password_confirmation
             });
+            setUser(result.data.data)
             handleClose();
         } catch (error) {
-            // Ошибки будут показаны через наш Toaster компонент
-            console.error("Ошибка регистрации:", error);
+            // Ошибка будет обработана в WayToBackend
+            console.error(error);
         }
     }
 
     const handleLogin = async () => {
-        // Отправка данных на сервер
         try {
             const result = await WayToBackend.loginUser({
                 email: formData.email,
                 password: formData.password
             });
-            setUser(result.data.data)
-            handleClose();
+            if (result.success && result.data.data) {
+                setUser(result.data.data);
+                handleClose();
+            } else {
+                addAlert({ message: "Ошибка при входе. Пожалуйста, проверьте email и пароль." });
+            }
         } catch (error) {
-            console.error("Ошибка входа:", error);
+            // Ошибка будет обработана в WayToBackend
+            console.error(error);
+        }
+    }
+
+    const handleMyAccount = async () => {
+        // Проверяем статус авторизации через API
+        if (user) {
+            router.visit('/my');
+        } else {
+            // Проверяем наличие токена в localStorage
+            const accessToken = localStorage.getItem('access_token');
+            if (accessToken) {
+                // Если есть токен, перенаправляем на страницу /my
+                // ProtectedRoute сам обновит данные пользователя
+                router.visit('/my');
+            } else {
+                addAlert({ message: "Пожалуйста, войдите в систему для доступа к личному кабинету." });
+            }
         }
     }
 
@@ -114,9 +146,20 @@ const MenuHeader = () => {
                         </Button>
                     </>
                 ) : (
-                    <Button colorScheme='teal' variant='solid'>
-                        Кабинет
-                    </Button>
+                        <>
+                            <Button colorScheme='teal' variant='solid' onClick={handleMyAccount}>
+                                Кабинет
+                            </Button>
+                            <Button colorScheme='teal' variant='solid' onClick={() => router.visit('/profile')}>
+                                Профиль
+                            </Button>
+                            <Button colorScheme='teal' variant='solid'>
+                                Мой корабль
+                            </Button>
+                            <Button colorScheme='teal' variant='outline' onClick={handleLogout}>
+                                Выход
+                            </Button>
+                        </>
                 )}
             </Stack>
 

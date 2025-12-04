@@ -32,6 +32,8 @@ return Application::configure(basePath: dirname(__DIR__))
         // Регистрация alias для AdminMiddleware
         $middleware->alias([
             'admin' => AdminMiddleware::class,
+            'auth.inertia' => \App\Http\Middleware\HandleInertiaAuthentication::class,
+            'auth.inertia.api' => \App\Http\Middleware\HandleInertiaApiAuthentication::class,
         ]);
 
         // AdminMiddleware будет применяться только к определенным маршрутам

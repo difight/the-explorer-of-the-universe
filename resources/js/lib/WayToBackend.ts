@@ -1,47 +1,75 @@
 import { useAlertsStore } from "@/store/alertStore";
 import { useUserStore } from "@/store/userStore";
 import { ApiError, ValidationError, UnauthorizedError, ForbiddenError, ServerError } from "./ApiErrors";
+import { UserLogin, UserRegister } from "@/types";
 
 class WayToBackend {
     readonly #endpoint: string = import.meta.env.VITE_APP_URL || "http://localhost:8000";
     readonly #addAlert = useAlertsStore.getState().addAlert;
-    readonly #user = useUserStore.getState().user;
+    readonly #getUser = () => useUserStore.getState().user;
+    readonly #setUser = useUserStore.getState().setUser;
+    readonly #clearUser = useUserStore.getState().clearUser;
 
-    #getCsrfToken(): string | null {
+    #getAccessToken(): string | null {
         let bearerToken = '';
-        if (this.#user && this.#user?.access_token) {
-            bearerToken = `Bearer ${this.#user.access_token}`;
+        const user = this.#getUser();
+        if (user && user?.access_token) {
+            bearerToken = `Bearer ${user.access_token}`;
+        } else {
+            // Пытаемся получить токен из localStorage
+            const accessToken = localStorage.getItem('access_token');
+            if (accessToken) {
+                bearerToken = `Bearer ${accessToken}`;
+            }
         }
         return bearerToken;
     }
 
     async #refreshToken(): Promise<void> {
         try {
-            const refreshToken: string  = (this.#user) ? this.#user?.refresh_token : '';
+            const user = this.#getUser();
+            const refreshToken: string  = (user) ? user?.refresh_token : '';
             const url = new URL(`${this.#endpoint}/api/auth/refresh`);
-            url.searchParams.append('refresh_token', refreshToken);
-            // Отправляем запрос на обновление CSRF токена
+            url.searchParams.append('refresh-token', refreshToken);
+            // Отправляем запрос на обновление токена
             const response = await fetch(url.toString(), {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     "Accept": "application/json",
                 },
-                credentials: 'include', // важно для cookie, если используешь
+                credentials: 'include',
             });
 
             if (!response.ok) {
                 console.error('Failed to refresh token:', response.status, response.statusText);
             }
+            const resp = await response.json()
+            // Сохраняем обновленные токены в localStorage
+            if (resp.data.data.access_token) {
+                localStorage.setItem('access_token', resp.data.data.access_token);
+                localStorage.setItem('access_token_expires_at', resp.data.data.access_token_expires_at);
+                localStorage.setItem('refresh_token', resp.data.data.refresh_token);
+                localStorage.setItem('refresh_token_expires_at', resp.data.data.refresh_token_expires_at);
+            }
+            this.#setUser(resp.data.data)
         } catch (error) {
             console.error('Error refreshing token:', error);
+            this.#clearUser()
             // Добавляем уведомление об ошибке
             this.#addAlert({ message: "Ошибка обновления токена безопасности. Пожалуйста, перезагрузите страницу." });
         }
     }
 
-    async registerUser(data: any) {
+    async registerUser(data: UserRegister) {
         try {
             const result = await this.#fetchData("auth/register", data);
+            // Сохраняем токены в localStorage
+            if (result.data.data.access_token) {
+                localStorage.setItem('access_token', result.data.data.access_token);
+                localStorage.setItem('access_token_expires_at', result.data.data.access_token_expires_at);
+                localStorage.setItem('refresh_token', result.data.data.refresh_token);
+                localStorage.setItem('refresh_token_expires_at', result.data.data.refresh_token_expires_at);
+            }
             // Добавляем успешное уведомление
             this.#addAlert({ message: "Вы успешно зарегистрировались!" });
             return { success: true, data: result };
@@ -66,9 +94,31 @@ class WayToBackend {
         }
     }
 
-    async loginUser(data: any) {
+    async logoutUser() {
+        try {
+            const result = await this.#fetchData("auth/logout")
+            // Очищаем токены из localStorage
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('access_token_expires_at');
+            localStorage.removeItem('refresh_token');
+            localStorage.removeItem('refresh_token_expires_at');
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+
+    async loginUser(data: UserLogin) {
         try {
             const result = await this.#fetchData("auth/login", data);
+            // Сохраняем токены в localStorage
+            if (result.data.data.access_token) {
+                localStorage.setItem('access_token', result.data.data.access_token);
+                localStorage.setItem('access_token_expires_at', result.data.data.access_token_expires_at);
+                localStorage.setItem('refresh_token', result.data.data.refresh_token);
+                localStorage.setItem('refresh_token_expires_at', result.data.data.refresh_token_expires_at);
+            }
             // Добавляем успешное уведомление
             this.#addAlert({ message: "Вы успешно вошли в систему!" });
             return { success: true, data: result };
@@ -95,7 +145,7 @@ class WayToBackend {
         }
     }
 
-    async #fetchData(url: string, data: any) {
+    async #fetchData(url: string, data: any = {}) {
         try {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 10000); // Таймаут 10 секунд
@@ -108,20 +158,20 @@ class WayToBackend {
             };
 
 
-            const csrfToken = await this.#getCsrfToken();
-            if (csrfToken) {
-                headers["Authorization"] = csrfToken;
+            const accessToken = this.#getAccessToken();
+            if (accessToken) {
+                headers["Authorization"] = accessToken;
             }
 
             let response = await fetch(`${this.#endpoint}/api/${url}`, {
-                method: method,
-                headers: headers,
+                method,
+                headers,
                 body: JSON.stringify(data),
-                redirect: 'follow', // Явно указываем, что следуем за редиректами
-                signal: controller.signal // Добавляем сигнал для возможности отмены
+                redirect: 'follow',
+                signal: controller.signal
             });
 
-            // Если получили 401 ошибку (истек CSRF токен), обновляем токен и повторяем запрос
+            // Если получили 401 ошибку (истек токен), обновляем токен и повторяем запрос
             if (response.status === 401) {
                 await this.#refreshToken();
 
@@ -136,9 +186,7 @@ class WayToBackend {
                 });
             }
 
-            clearTimeout(timeoutId); // Очищаем таймаут при успешном ответе
-            console.log('data', data)
-            console.log('response', response)
+            clearTimeout(timeoutId);
 
             // Проверяем, является ли ответ редиректом
             if (response.status >= 300 && response.status < 400) {
@@ -152,6 +200,7 @@ class WayToBackend {
                 } catch (parseError) {
                     // Если не удалось распарсить JSON, возвращаем текст ответа
                     const text = await response.text();
+                    console.error(text)
                     this.#addAlert({ message: "Получен некорректный ответ от сервера. Пожалуйста, попробуйте позже." });
                     throw new ApiError("Некорректный ответ от сервера", response.status);
                 }
@@ -238,6 +287,7 @@ class WayToBackend {
         switch (url) {
             case "auth/register":
             case "auth/login":
+            case "auth/logout":
                 return "POST";
             default:
                 throw new Error("Method not found");
@@ -247,13 +297,30 @@ class WayToBackend {
     // Метод для проверки статуса аутентификации
     async checkAuthStatus(): Promise<boolean> {
         try {
-            const response = await fetch(`${this.#endpoint}/api/user`, {
+            // Проверяем наличие токена в localStorage
+            const accessToken = localStorage.getItem('access_token');
+            if (!accessToken) {
+                return false;
+            }
+
+            const response = await fetch(`${this.#endpoint}/api/auth/user`, {
                 method: 'GET',
                 headers: {
                     "Accept": "application/json",
+                    "Authorization": `Bearer ${accessToken}`,
                 },
                 credentials: 'include',
             });
+
+            // Если получили 401, значит пользователь не авторизован
+            if (response.status === 401) {
+                // Очищаем токены из localStorage
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('access_token_expires_at');
+                localStorage.removeItem('refresh_token');
+                localStorage.removeItem('refresh_token_expires_at');
+                return false;
+            }
 
             return response.ok;
         } catch (error) {

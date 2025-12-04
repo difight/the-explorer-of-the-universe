@@ -1,4 +1,4 @@
-// components/AnimatedSpaceHeader.jsx
+
 import React from 'react';
 
 const AnimatedSpaceHeader = () => {

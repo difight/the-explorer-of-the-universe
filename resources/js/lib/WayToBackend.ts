@@ -112,13 +112,7 @@ class WayToBackend {
     async loginUser(data: UserLogin) {
         try {
             const result = await this.#fetchData("auth/login", data);
-            // Сохраняем токены в localStorage
-            if (result.data.data.access_token) {
-                localStorage.setItem('access_token', result.data.data.access_token);
-                localStorage.setItem('access_token_expires_at', result.data.data.access_token_expires_at);
-                localStorage.setItem('refresh_token', result.data.data.refresh_token);
-                localStorage.setItem('refresh_token_expires_at', result.data.data.refresh_token_expires_at);
-            }
+            this.#setUser(result.data)
             // Добавляем успешное уведомление
             this.#addAlert({ message: "Вы успешно вошли в систему!" });
             return { success: true, data: result };
